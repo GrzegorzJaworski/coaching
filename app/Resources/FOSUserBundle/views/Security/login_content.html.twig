@@ -1,0 +1,40 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="login">
+    <div class="login-main">
+        <div class="login-bottom">
+            <div class="login-right w3agile">
+                {% if error %}
+                    <p class="text-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+                {% endif %}
+                <div class="login-left-bottom agileinfo">
+
+                    <form action="{{ path("fos_user_security_check") }}" method="post">
+                        {% if csrf_token %}
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+                        {% endif %}
+                        <input type="text" value="{{ last_username | default('Email') }}" name="_username" id="username"
+                               autocomplete="off"
+                               onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}"/>
+                        <input type="password" id="password" name="_password" value="Password"
+                               onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}"/>
+                        <div class="remember">
+                                <span class="checkbox1">
+							        <label class="checkbox pull-left"><input type="checkbox" name="" checked=""
+                                                                             id="remember_me"
+                                                                             name="_remember_me"><i> </i>Zapamiętaj mnie</label>
+						        </span>
+                            {#<span class="checkbox forgot pull-right">#}
+                            {#<a href="#">Forgot Password?</a>#}
+                            {#</span>#}
+                            <div class="clear"></div>
+                        </div>
+
+                        <input class="btn btn-default " type="submit" value="Zaloguj">
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

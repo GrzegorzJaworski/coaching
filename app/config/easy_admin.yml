@@ -1,0 +1,10 @@
+easy_admin:
+    entities:
+        User:
+          class: AppBundle\Entity\User
+        Pdf:
+          class: AppBundle\Entity\Pdf
+          form:
+              fields:
+                  - title
+                  - { property: 'pdfFile', type: 'vich_file' }

@@ -1,0 +1,11 @@
+{% extends "@FOSUser/layout.html.twig" %}
+{% block stylesheets %}
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" media="all"/>
+{% endblock %}
+{% block fos_user_content %}
+    {{ include('@FOSUser/Security/login_content.html.twig') }}
+{% endblock fos_user_content %}
+{% block copyright %}
+    <br>
+© 2016 Classy Login Form. All rights reserved | Design by  <a href="http://w3layouts.com/" target="_blank">  W3layouts </a>
+{% endblock %}
