@@ -7,6 +7,7 @@
  */
 
 namespace AppBundle\Controller;
+use AppBundle\Entity\Movie;
 use AppBundle\Entity\Pdf;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -30,9 +31,32 @@ class IndexController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         /** @var Pdf[] $pdfs */
-        $pdfs = $em->getRepository(Pdf::class)->findAll();
+        $pdfs = $em->getRepository(pdf::class)->findAll();
+
         return$this->render('pdf.html.twig', [
             'pdfs' => $pdfs
         ]);
+    }
+
+    /**
+     * @Route("movie", name="movie")
+     */
+    public function movieAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var Movie[] $movies */
+        $movies = $em->getRepository(Movie::class)->findAll();
+
+        return$this->render('movie.html.twig', [
+            'movies' => $movies
+        ]);
+    }
+
+    public function downloadAction()
+    {
+        $pdfPath = $this->getParameter('dir.downloads').'/sample.pdf';
+
+        return $this->file($pdfPath);
     }
 }

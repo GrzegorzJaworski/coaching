@@ -12,14 +12,13 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="pdf")
+ * @ORM\Table(name="movie")
  * @Vich\Uploadable
  */
-class Pdf
+class Movie
 {
     /**
      * @ORM\Id
@@ -37,24 +36,13 @@ class Pdf
      * @ORM\Column(type="string", length=255)
      * @var string
      */
-    private $pdf;
+    private $movie;
 
     /**
-     * @Assert\File(
-     *     maxSize = "2048k",
-     *     mimeTypes = {"application/pdf", "application/x-pdf"},
-     *     mimeTypesMessage = "Błędny plik! Tylko PDF"
-     * )
-     * @Vich\UploadableField(mapping="pdf", fileNameProperty="pdf")
+     * @Vich\UploadableField(mapping="movie", fileNameProperty="movie")
      * @var File
      */
-    private $pdfFile;
-
-    /**
-     * @ORM\Column(type="integer")
-     * @var string
-     */
-    private $category;
+    private $movieFile;
 
     /**
      * @return mixed
@@ -83,48 +71,32 @@ class Pdf
     /**
      * @return string
      */
-    public function getPdf()
+    public function getMovie()
     {
-        return $this->pdf;
+        return $this->movie;
     }
 
     /**
-     * @param string $pdf
+     * @param string $movie
      */
-    public function setPdf($pdf)
+    public function setMovie($movie)
     {
-        $this->pdf = $pdf;
+        $this->movie = $movie;
     }
 
     /**
      * @return File
      */
-    public function getPdfFile()
+    public function getMovieFile()
     {
-        return $this->pdfFile;
+        return $this->movieFile;
     }
 
     /**
-     * @param File $pdfFile
+     * @param File $movieFile
      */
-    public function setPdfFile($pdfFile)
+    public function setMovieFile($movieFile)
     {
-        $this->pdfFile = $pdfFile;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * @param string $category
-     */
-    public function setCategory($category)
-    {
-        $this->category = $category;
+        $this->movieFile = $movieFile;
     }
 }

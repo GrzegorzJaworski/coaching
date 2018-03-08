@@ -4,7 +4,17 @@ easy_admin:
           class: AppBundle\Entity\User
         Pdf:
           class: AppBundle\Entity\Pdf
+          list:
+              fields:
+                  - { property: 'pdf', template: 'contract.html.twig', base_path: '%app.path.pdf%' }
           form:
               fields:
                   - title
                   - { property: 'pdfFile', type: 'vich_file' }
+                  - { property: 'category', type: 'choice', type_options: { choices: { 'Kot':'1', 'Pies':'2', 'Klient':'3'}}}
+        Movie:
+          class: AppBundle\Entity\Movie
+          form:
+              fields:
+                  - title
+                  - { property: 'movieFile', type: 'vich_file' }

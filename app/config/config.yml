@@ -85,3 +85,8 @@ vich_uploader:
         pdf:
             uri_prefix: '%app.path.pdf%'
             upload_destination: '%kernel.root_dir%/../web/uploads/files'
+            namer: vich_uploader.namer_uniqid
+        movie:
+             uri_prefix: '%app.path.movie%'
+             upload_destination: '%kernel.root_dir%/../web/uploads/movie'
+             namer: vich_uploader.namer_uniqid
